@@ -1,16 +1,18 @@
 from selenium import webdriver
-from secrets import usr,pwd,_chrome_path 
-import time 
+import time
+
+from secrets import usr, pwd, _chrome_path 
+ 
 
 class GithubBot:
     def __init__(self):
-        chrome_path=_chrome_path
-        self.driver=webdriver.Chrome(chrome_path)
+        chrome_path = _chrome_path
+        self.driver = webdriver.Chrome(chrome_path)
         self.driver.get("https://github.com")
     
-    def login(self,username,password):
-        self._username=username
-        self._password=password
+    def login(self, username, password):
+        self._username = username
+        self._password = password
         self.driver.find_element_by_xpath('/html/body/div[1]/header/div/div[2]/div[2]/a[1]').click()
         self.driver.find_element_by_xpath('//*[@id="login_field"]').send_keys(self._username)
         self.driver.find_element_by_xpath('//*[@id="password"]').send_keys(self._password)
@@ -19,5 +21,5 @@ class GithubBot:
         self.driver.quit()
 
 
-gBot=GithubBot()
-gBot.login(usr,pwd)
+gBot = GithubBot()
+gBot.login(usr, pwd)
