@@ -21,7 +21,7 @@ def get_score():
 @app.route('/')
 def index():
 	score = get_score()
-    	# Used refresh instead of async stuff
+    # Used refresh instead of async stuff
 	return "<meta http-equiv='refresh' content='5' /><h1>"+score['score']+"</h1>"
 	
 if __name__ == "__main__":
