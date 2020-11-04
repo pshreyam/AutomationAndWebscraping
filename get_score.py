@@ -1,3 +1,6 @@
+# No APIs used
+# Web Scraping implemented
+
 from flask import Flask
 import requests
 from bs4 import BeautifulSoup
@@ -11,16 +14,18 @@ def get_score():
 	if r.status_code == 200:
 		soup = BeautifulSoup(r.text, 'html.parser')
 		return {
-			"score": soup.find_all('div', class_="score-run font-weight-bold")[0].get_text()
+			"team1": soup.find_all('div', class_="score-run font-weight-bold")[0].get_text(),
+			"team2": soup.find_all('div', class_="score-run font-weight-bold")[1].get_text()
 		}
-	return {
-		"score": "Sorry! Score cannot be fetched!"
-	}
+	return None
 
 @app.route('/')
 def index():
 	score = get_score()
-	return "<meta http-equiv='refresh' content='5' /><h1>"+score['score']+"</h1>"
+	if score:
+		return "<meta http-equiv='refresh' content='5' /><h1>"+\
+		score['team1']+"</h1><h1>"+score['team2']+"</h1>"
+	return "<meta http-equiv='refresh' content='5' /><h1>No score available!</h1>"
 	
 if __name__ == "__main__":
 	app.run(debug=True)
