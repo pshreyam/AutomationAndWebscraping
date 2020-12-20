@@ -1,2 +1,3 @@
-# Automation-Webscraping
-Secret module has been removed but it contains the username, password of Github and also the path for chromedriver.
+# Automations
+
+This repo contains some simple automations that were quickly designed for learning purpose or for accomplishing quick tasks.

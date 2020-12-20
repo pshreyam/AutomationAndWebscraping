@@ -1,8 +1,11 @@
+#!/usr/bin/python3
+
+""" Test script for github login """
+
 from selenium import webdriver
 import time
 
 from secrets import usr, pwd, _chrome_path 
- 
 
 class GithubBot:
     def __init__(self):
@@ -21,5 +24,5 @@ class GithubBot:
         self.driver.quit()
 
 
-gBot = GithubBot()
-gBot.login(usr, pwd)
+g_bot = GithubBot()
+g_bot.login(usr, pwd)
